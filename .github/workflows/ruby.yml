@@ -14,7 +14,7 @@ jobs:
     name: Rspec Tests
     runs-on: ubuntu-latest
     env:
-      api-dir: ./api
+      api-dir: ./
 
     steps:
       - uses: actions/checkout@v1

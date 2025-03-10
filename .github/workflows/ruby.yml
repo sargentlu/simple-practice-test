@@ -25,7 +25,7 @@ jobs:
       - name: Run bundle install
         working-directory: ${{env.api-dir}}
         run: gem install bundler
-          bundle install --retry 3
+          bundle install
 
       - name: Run tests
         run: bundle exec rspec spec/

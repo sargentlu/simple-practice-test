@@ -24,7 +24,8 @@ jobs:
 
       - name: Run bundle install
         working-directory: ${{env.api-dir}}
-        run: gem install bundler
+        run: |
+          gem install bundler
           bundle install
 
       - name: Run tests

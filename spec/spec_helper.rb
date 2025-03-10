@@ -1,7 +1,8 @@
 # frozen-string-literal: true
-require 'rspec'
 require 'capybara/rspec'
 require 'capybara/dsl'
+require 'dotenv/load'
+require 'rspec'
 require 'selenium-webdriver'
 
 pages  = File.join(Dir.pwd, 'spec/pages/**/*.rb')

@@ -11,10 +11,10 @@ permissions:
 
 jobs:
   build:
-    name: CI
+    name: Rspec Tests
     runs-on: ubuntu-latest
     env:
-      api-dir: /api
+      api-dir: ./api
 
     steps:
       - uses: actions/checkout@v1

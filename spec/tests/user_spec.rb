@@ -17,4 +17,27 @@ describe 'Simple Practice Test' do
     end
   end
 
+  it 'Creates a client' do
+    @new_client_card = NewClientCard.new
+
+    @sign_in_card.login_with(ENV['USER_EMAIL'], ENV['USER_PWD'])
+
+    @new_client_card.create_client(
+      ENV['CLIENT01_FIRST_NAME'],
+      ENV['CLIENT01_LAST_NAME']
+    )
+    expect(true).to eq(true)
+  end
+
+  it 'Verifies the created client is present' do
+    @clients_page = ClientsPage.new
+    first_name = ENV['CLIENT01_FIRST_NAME']
+    last_name = ENV['CLIENT01_LAST_NAME']
+
+    @sign_in_card.login_with(ENV['USER_EMAIL'], ENV['USER_PWD'])
+
+    client = @clients_page.search_client(first_name, last_name)
+    expect(client['client_name']).to eq("%s %s" % [first_name, last_name])
+  end
+
 end

@@ -1,4 +1,5 @@
 # frozen-string-literal: true
+
 require 'capybara/rspec'
 require 'capybara/dsl'
 require 'dotenv/load'

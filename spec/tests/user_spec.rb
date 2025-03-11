@@ -1,3 +1,5 @@
+# frozen-string-literal: true
+
 require 'spec_helper'
 
 describe 'Simple Practice Test' do

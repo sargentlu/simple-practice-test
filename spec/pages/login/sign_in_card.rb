@@ -1,3 +1,5 @@
+# frozen-string-literal: true
+
 class SignInCard
   include Capybara::DSL
 

@@ -1,7 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'codeclimate-test-reporter', group: :test, require: nil
-
 gem 'capybara',             '~> 3.40'
 gem 'dotenv',               '~> 3.1', '>= 3.1.7'
 gem 'rspec',                '~> 3.13'

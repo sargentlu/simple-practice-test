@@ -1,0 +1,19 @@
+services:
+  simple-practice-tests:
+    container_name: simple-practice-tests
+    image: test/simple-practice-tests
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      CHROME_URL: http://chrome:4444/wd/hub
+    stdin_open: true
+    tty: true
+    depends_on:
+      - chrome
+  chrome:
+    container_name: chrome
+    image: selenium/standalone-chromium
+    environment:
+      JAVA_OPTS: -Dwebdriver.chrome.whitelistedIps= -Dwebdriver.chrome.allowedIps=
+      shm_size: '2gb'

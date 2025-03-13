@@ -3,6 +3,13 @@
 require 'spec_helper'
 
 describe 'Simple Practice Test' do
+  email = ENV['USER_EMAIL']
+  password = ENV['USER_PWD']
+  incorrect_email = ENV['INCORRECT_EMAIL']
+  incorrect_password = ENV['INCORRECT_PWD']
+  first_name = ENV['CLIENT01_FIRST_NAME']
+  last_name = ENV['CLIENT01_LAST_NAME']
+
   before(:each) do
     @session = create_web_session
     @session.visit('/')
@@ -16,10 +23,10 @@ describe 'Simple Practice Test' do
   it 'Returns an error if incorrect credentials' do
     error_message = "Enter the email associated with your account and double-check"\
       " your password. If you're still having trouble, you can reset your password."
-    @sign_in_card.login_with(ENV['INCORRECT_EMAIL'], ENV['INCORRECT_PWD'])
-    within(find('.alert-container')) do
-      expect(page).to have_content error_message
-    end
+
+    @sign_in_card.login_with(incorrect_email, incorrect_password)
+
+    expect(@session.find('.alert-container')).to have_content error_message
   end
 
   it 'Creates a client' do
@@ -36,11 +43,6 @@ describe 'Simple Practice Test' do
 
   it 'Verifies the created client is present' do
     @clients_page = ClientsPage.new(@session)
-    email = ENV['USER_EMAIL']
-    password = ENV['USER_PWD']
-    first_name = ENV['CLIENT01_FIRST_NAME']
-    last_name = ENV['CLIENT01_LAST_NAME']
-
     @sign_in_card.login_with(email, password)
 
     client = @clients_page.search_client(first_name, last_name)

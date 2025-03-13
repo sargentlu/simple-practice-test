@@ -29,15 +29,40 @@ describe 'Simple Practice Test' do
     expect(@session.find('.alert-container')).to have_content error_message
   end
 
-  it 'Creates a client' do
-    @new_client_card = NewClientCard.new
+  it 'Creates a client with the minimum required info' do
+    @sign_in_card.login_with(email, password)
 
-    @sign_in_card.login_with(ENV['USER_EMAIL'], ENV['USER_PWD'])
-
+    @new_client_card = NewClientCard.new(@session)
     @new_client_card.create_client(
-      ENV['CLIENT01_FIRST_NAME'],
-      ENV['CLIENT01_LAST_NAME']
+      {
+        'firstName': first_name,
+        'lastName': last_name
+      }
     )
+
+    expect(true).to eq(true)
+  end
+
+  it 'Creates a client with more info' do
+    @sign_in_card.login_with(email, password)
+
+    @new_client_card = NewClientCard.new(@session)
+    @new_client_card.create_client(
+      {
+        'firstName': first_name,
+        'lastName': last_name,
+        'nickname': 'Mul',
+        'month': 'December',
+        'day': 15,
+        'year': 1999,
+        'status': 'prospective',
+        'waitlist': true,
+        'office': 'Secoind',
+        'email':  'mulatu@mail.com',
+        'phone': '555-555-5555'
+      }
+    )
+
     expect(true).to eq(true)
   end
 

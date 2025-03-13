@@ -1,6 +1,5 @@
 
 .env*
-.flaskenv*
-!.env.project
-!.env.vault
-secrets/*.env*
+!.env.enc
+.sekrets.key
+!.sekrets.key.example

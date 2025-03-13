@@ -11,3 +11,5 @@ COPY Gemfile Gemfile
 RUN bundle install
 
 COPY . .
+
+ENTRYPOINT ["bundle", "exec", "rspec", "-fd", "/spec/tests/user_spec.rb"]

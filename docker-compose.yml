@@ -1,22 +1,14 @@
+version: '3.1'
+
 services:
   simple-practice-tests:
-    container_name: simple-practice-tests
-    image: sergiomtzlu/simple-practice-tests
+    container_name: simple-practice-test
+    image: sergiomtzlu/simple-practice-test
     build:
       context: .
       dockerfile: Dockerfile
     environment:
       CHROME_URL: http://chrome:4444/wd/hub
-    entrypoint: ["/run/scripts/secrets2env.sh", "bundle", "exec", "rspec", "-fd", "spec/tests/user_spec.rb"]
-    secrets:
-      - USER_EMAIL
-      - USER_PWD
-      - INCORRECT_EMAIL
-      - INCORRECT_PWD
-      - CLIENT01_FIRST_NAME
-      - CLIENT01_LAST_NAME
-      - source: secrets2env.sh
-        target: /run/scripts/secrets2env.sh
     stdin_open: true
     tty: true
     depends_on:
@@ -28,18 +20,18 @@ services:
       JAVA_OPTS: -Dwebdriver.chrome.whitelistedIps= -Dwebdriver.chrome.allowedIps=
       shm_size: '2gb'
 
-secrets:
-  USER_EMAIL:
-    file: secrets/USER_EMAIL.env
-  USER_PWD:
-    file: secrets/USER_PWD.env
-  INCORRECT_EMAIL:
-    file: secrets/INCORRECT_EMAIL.env
-  INCORRECT_PWD:
-    file: secrets/INCORRECT_PWD.env
-  CLIENT01_FIRST_NAME:
-    file: secrets/CLIENT01_FIRST_NAME.env
-  CLIENT01_LAST_NAME:
-    file: secrets/CLIENT01_LAST_NAME.env
-  secrets2env.sh:
-    file: scripts/secrets2env.sh
+#secrets:
+#  USER_EMAIL:
+#    file: secrets/USER_EMAIL.env
+#  USER_PWD:
+#    file: secrets/USER_PWD.env
+#  INCORRECT_EMAIL:
+#    file: secrets/INCORRECT_EMAIL.env
+#  INCORRECT_PWD:
+#    external: true
+#  CLIENT01_FIRST_NAME:
+#    file: secrets/CLIENT01_FIRST_NAME.env
+#  CLIENT01_LAST_NAME:
+#    file: secrets/CLIENT01_LAST_NAME.env
+#  secrets2env.sh:
+#    file: scripts/secrets2env.sh

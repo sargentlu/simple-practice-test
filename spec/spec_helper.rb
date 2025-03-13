@@ -2,23 +2,12 @@
 
 require 'capybara/rspec'
 require 'capybara/dsl'
-require 'dotenv'
 require 'rspec'
 require 'selenium-webdriver'
 require 'sekrets'
 
 pages  = File.join(Dir.pwd, 'spec/pages/**/*.rb')
 Dir.glob(pages).each { |file| require file }
-
-secrets = Sekrets.settings_for('.env.enc')
-if secrets
-  secrets.split.each do |item|
-    key, value = item.split('=')
-    ENV[key] = value
-  end
-end
-
-Dotenv.load
 
 RSpec.configure do |config|
   config.before(:each) do

@@ -1,14 +1,25 @@
 # frozen-string-literal: true
 
 require 'spec_helper'
+require 'sekrets'
 
 describe 'Simple Practice Test' do
-  email = ENV['USER_EMAIL']
-  password = ENV['USER_PWD']
-  incorrect_email = ENV['INCORRECT_EMAIL']
-  incorrect_password = ENV['INCORRECT_PWD']
-  first_name = ENV['CLIENT01_FIRST_NAME']
-  last_name = ENV['CLIENT01_LAST_NAME']
+  secrets_settings = Sekrets.settings_for('settings.yml.enc')
+  secrets = Hash.new
+
+  if secrets_settings
+    secrets_settings.split.each do |item|
+      key, value = item.split('=')
+      secrets[key] = value
+    end
+  end
+
+  email = secrets['USER_EMAIL']
+  password = secrets['USER_PWD']
+  incorrect_email = secrets['INCORRECT_EMAIL']
+  incorrect_password = secrets['INCORRECT_PWD']
+  first_name = secrets['CLIENT01_FIRST_NAME']
+  last_name = secrets['CLIENT01_LAST_NAME']
 
   before(:each) do
     @session = create_web_session

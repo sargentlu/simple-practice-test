@@ -11,5 +11,3 @@ COPY Gemfile Gemfile
 RUN bundle install
 
 COPY . .
-
-CMD ["bundle", "exec", "rspec", "-fd", "/spec/tests/user_spec.rb"]

@@ -1,7 +1,7 @@
 version: '3.1'
 
 services:
-  simple-practice-tests:
+  simple-practice-test:
     container_name: simple-practice-test
     image: sergiomtzlu/simple-practice-test
     build:
@@ -19,19 +19,3 @@ services:
     environment:
       JAVA_OPTS: -Dwebdriver.chrome.whitelistedIps= -Dwebdriver.chrome.allowedIps=
       shm_size: '2gb'
-
-#secrets:
-#  USER_EMAIL:
-#    file: secrets/USER_EMAIL.env
-#  USER_PWD:
-#    file: secrets/USER_PWD.env
-#  INCORRECT_EMAIL:
-#    file: secrets/INCORRECT_EMAIL.env
-#  INCORRECT_PWD:
-#    external: true
-#  CLIENT01_FIRST_NAME:
-#    file: secrets/CLIENT01_FIRST_NAME.env
-#  CLIENT01_LAST_NAME:
-#    file: secrets/CLIENT01_LAST_NAME.env
-#  secrets2env.sh:
-#    file: scripts/secrets2env.sh

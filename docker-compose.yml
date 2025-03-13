@@ -1,7 +1,7 @@
 services:
   simple-practice-tests:
     container_name: simple-practice-tests
-    image: test/simple-practice-tests
+    image: sergiomtzlu/simple-practice-tests
     build:
       context: .
       dockerfile: Dockerfile

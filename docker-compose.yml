@@ -1,7 +1,9 @@
+version: '3.1'
+
 services:
-  simple-practice-tests:
-    container_name: simple-practice-tests
-    image: test/simple-practice-tests
+  simple-practice-test:
+    container_name: simple-practice-test
+    image: sergiomtzlu/simple-practice-test
     build:
       context: .
       dockerfile: Dockerfile

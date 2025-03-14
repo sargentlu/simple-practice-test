@@ -1,0 +1,4 @@
+# .dockerignore
+settings.yml*
+!settings.yml.enc
+scripts/*

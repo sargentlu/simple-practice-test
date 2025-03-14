@@ -1,0 +1,5 @@
+
+settings.yml*
+!settings.yml.enc
+.sekrets.key
+!.sekrets.key.example

@@ -29,7 +29,7 @@ describe 'Simple Practice Test' do
     end_web_session(@session)
   end
 
-  it 'Returns an error if incorrect credentials' do
+  it 'Returns an error if trying to log in with incorrect credentials' do
     error_message = "Enter the email associated with your account and double-check"\
       " your password. If you're still having trouble, you can reset your password."
 

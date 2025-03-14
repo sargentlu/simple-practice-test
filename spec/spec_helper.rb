@@ -6,6 +6,7 @@ require 'rspec'
 require 'selenium-webdriver'
 require 'sekrets'
 
+# Load all page classes
 pages  = File.join(Dir.pwd, 'spec/pages/**/*.rb')
 Dir.glob(pages).each { |file| require file }
 
@@ -15,10 +16,14 @@ RSpec.configure do |config|
   end
 end
 
+# Create a web session. Runs on a Chromium browser if present,
+# unless the project is run locally in which case it's run on
+# a Firefox browser
 def create_web_session
   Capybara.app_host = 'https://secure.simplepractice.com/'
   Capybara.run_server = false
   Capybara.default_max_wait_time = 5
+  Capybara.enable_aria_label = true
 
   if ENV['CHROME_URL']
     Capybara.register_driver :remote do |app|
